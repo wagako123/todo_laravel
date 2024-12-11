@@ -4,8 +4,13 @@
 
 
 @section('content')
+
+<button><a href="{{route('journal.home') }}">Journal</a></button>
     @if(count($tasks))
         @foreach($tasks as $task)
+        <div>
+            
+        </div>
         <div>
                 <a href="{{route('tasks.show', ['id' => $task->id]) }}">{{$task->title}}</a>
             <div>

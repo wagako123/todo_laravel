@@ -17,11 +17,10 @@ Route::get('/tasks', function () {
 })->name('tasks.index');
 
 Route::get('/tasks/{id}', function ($id) {
-
-  
-   
-    return view('showTask', ['task'=>\App\Models\Task::findOrFail($id)]);
+  return view('showTask', ['task'=>\App\Models\Task::findOrFail($id)]);
 })->name('tasks.show');
+
+Route::view('/tasks/create', 'create');
 
 
 //journal routes
@@ -79,19 +78,15 @@ $entries = [
 //     return redirect()->route('journal.home');
 // });
 
-Route::get('/journal', function () use($entries) {
+Route::get('/journal', function () {
     return view('journal',[
-        'entries' => $entries 
+        'entries' => \App\Models\Journal::latest()->get()
     ]);
 })->name('journal.home');
 
-Route::get('/journal/{id}', function ($id) use($entries) {
-    $entry = collect($entries)->firstWhere('id', $id);
-
-    if (!$entry){
-        abort(Response::HTTP_NOT_FOUND);
-    }
-
-    return view('showEntry', ['entry'=>$entry]);
+Route::get('/journal/{id}', function ($id) {
+  
+    
+    return view('showEntry', ['entry'=>\App\Models\Journal::findOrFail($id)]);
 })->name('journal.show');
 

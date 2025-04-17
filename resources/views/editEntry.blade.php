@@ -8,7 +8,7 @@
         <div>
             <label for="title">
                 Title
-                <input text="text" name='title' id="title"/>
+                <input text="text" name='title' id="title" value="{{old('title')}}"/>
             </label>
             @error('title')
                 {{$message}}
@@ -19,7 +19,7 @@
             <label for="description">
                 description
             </label>
-            <textarea name="description" id="description"></textarea>
+            <textarea name="description" id="description" >{{old('description')}}</textarea>
             @error('description')
                 {{$message}}
             @enderror
@@ -29,7 +29,7 @@
             <label for="long_description">
                 long_description
             </label>
-            <textarea name="long_description" id="long_description"></textarea>
+            <textarea name="long_description" id="long_description" >{{old('long_description')}}</textarea>
             @error('long_description')
                 {{$message}}
             @enderror

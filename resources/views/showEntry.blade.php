@@ -1,21 +1,31 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
-@section('title', $entry->title)
+@section('title', $journal->title)
 
 @section('content')
 
     <p>
-        {{$entry->description}}
+        {{$journal->description}}
     </p>
-    @if($entry->long_description)
+    @if($journal->long_description)
         <p>
-            {{$entry->long_description}}
+            {{$journal->long_description}}
         </p>
     @endif
     <p>
-        {{$entry->created_at}}
+        {{$journal->created_at}}
     </p>
     <p>
-        {{$entry->updated_at}}
+        {{$journal->updated_at}}
     </p>
+
+    <div>
+        <button href="{{ route('journal.edit', [ 'journal' => $journal ->id] )}}">Edit</button>
+        <form action="{{ route('journal.destroy', ['journal' => $journal->id] )}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit">DELETE</button>
+        </form>
+        
+    </div>
 @endsection 

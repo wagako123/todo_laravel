@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Journal extends Model
 {
     use HasFactory;
+
+    protected $fillable=['title', 'description', 'long_description'];
+    protected $guarded =['secret'];
 }

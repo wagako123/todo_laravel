@@ -18,9 +18,12 @@
     <p>
         {{$journal->updated_at}}
     </p>
-
     <div>
         <button href="{{ route('journal.edit', [ 'journal' => $journal ->id] )}}">Edit</button>
+    </div>
+        
+    <div>
+        
         <form action="{{ route('journal.destroy', ['journal' => $journal->id] )}}" method="POST">
         @csrf
         @method('DELETE')

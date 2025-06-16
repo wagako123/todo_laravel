@@ -94,6 +94,6 @@ Route::put('/Journal/{journal}', function(Journal $journal,JournalRequest $reque
 Route::delete('/Journal/{journal}', function(Journal $journal){
   $journal->delete();
 
-  return redirect()->route('Journal.home')
+  return redirect()->route('journal.home')
   ->with('Success', 'Entry deleted successfully!');
 })->name('journal.destroy');

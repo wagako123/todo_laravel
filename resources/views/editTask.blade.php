@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 
 @section('content')
-    @include('form', ['task' =>$task])
+    @include('taskForm', ['task' =>$task])
 @endsection
 

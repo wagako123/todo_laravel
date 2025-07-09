@@ -54,6 +54,11 @@ Route::delete('/tasks/{task}', function(Task $task){
   ->with('Success', 'task deleted successfully!');
 })->name('tasks.destroy');
 
+Route::put('tasks/{task}/toggle-complete', function(Task $task){
+  $task->togglecomplete();
+
+  return redirect()->back()->with("Success", "You've checked a task off your list");
+})->name('tasks.togglecomplete');
 
 
 //journal routes

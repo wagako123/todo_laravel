@@ -19,7 +19,7 @@
         {{$journal->updated_at}}
     </p>
     <div>
-        <button href="{{ route('journal.edit', [ 'journal' => $journal ->id] )}}">Edit</button>
+        <a href="{{ route('journal.edit', ['journal' => $journal ] )}}">Edit</a>
     </div>
         
     <div>

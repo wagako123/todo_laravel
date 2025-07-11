@@ -16,7 +16,7 @@ Route::get('/', function (){
 });
 Route::get('/tasks', function () {
     return view('index',[
-        'tasks' => Task::latest()->paginate(12)
+        'tasks' => Task::latest()->paginate(10)
     ]);
 
 })->name('tasks.index');
@@ -65,7 +65,7 @@ Route::put('tasks/{task}/toggle-complete', function(Task $task){
 
 Route::get('/journal', function () {
     return view('journal',[
-        'entries' => Journal::latest()->paginate(12)
+        'entries' => Journal::latest()->paginate(10)
     ]);
 })->name('journal.home');
 

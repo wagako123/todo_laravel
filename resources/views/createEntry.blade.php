@@ -2,6 +2,6 @@
 
 
 @section('content')
-   include ('journalForm')
+   @include ('journalForm')
 
 @endsection

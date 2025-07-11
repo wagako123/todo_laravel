@@ -5,14 +5,24 @@
 
 @section('content')
 
-<button><a href="{{route('journal.create') }}">New entry</a></button>
+
+
+<button class="flex flex-col items-center px-4 text-2xl rounded-lg border-1 border-black shadow-sm">
+    <a href="{{route('journal.create') }}">New entry</a>
+</button>
 
     @if(count($entries))   
         @foreach($entries as $entry)
-        <div>
-            <h1><a href="{{route('journal.show', ['journal' => $entry->id]) }}">{{$entry->title}}</a></h1>
+        <div class="border-b-1 border-gray-300 shadow-sm shadow-white bg-slate-200 px-4 py-4 rounded-md">
+            <h1 class="text-2xl text-sky-700">
+                <a href="{{route('journal.show', ['journal' => $entry->id]) }}">
+                 {{$entry->title}}
+                </a>
+            </h1>
 
-            <p>{{$entry->description}}</p>
+            <p class="text-gray-800">
+                {{$entry->description}}
+            </p>
         </div>
         @endforeach
         @else
@@ -21,7 +31,11 @@
         </div>
     @endif
 
-    <button><a href="{{route('tasks.index') }}">Tasks</a></button>
+    <button class="flex flex-col items-center px-4 text-2xl rounded-lg border-1 border-black shadow-sm">
+    <a href="{{route('tasks.index') }}">Tasks</a>
+</button>
+
+    
 
     <!-- nav buttons -->
     @if($entries->count())

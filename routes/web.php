@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Requests\JournalRequest;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use App\Models\Journal;
@@ -80,31 +81,33 @@ Route::get('/journal', function () {
 
 Route::view('journal/create','createEntry')->name('journal.create');
 
-Route::get('/journal/{id}', function ($id) {
+Route::get('/journal/{journal}', function ( Journal $journal) {
   return view('showEntry', [
-    'entry'=>Journal::findOrFail($id)
+    'entry'=>Journal::findOrFail($journal)
   ]);
 })->name('journal.show');
 
-Route::get('/journal/{id}/edit', function ($id) {
+Route::get('/journal/{journal}/edit', function (Journal $journal) {
   return view('editEntry', [
-    'entry'=>Journal::findOrFail($id)
+    'entry'=>Journal::findOrFail($journal)
   ]);
 })->name('journal.edit');
 
-Route::post('/journal',function(Request $request){
+Route::post('/journal',function( Journal $journal, JournalRequest $request){
   $data= $request -> validate([
     'title' => 'required|max:255',
     'description' => 'required',
     'long_description' => 'required'
   ]);
-  $entry= new Journal;
-  $entry-> title            =$data['title'];
-  $entry-> description      =$data['description'];
-  $entry-> long_description =$data['long_description'];
+ 
+  // $journal-> title            =$data['title'];
+  // $journal-> description      =$data['description'];
+  // $journal-> long_description =$data['long_description'];
 
-  $entry->save();
+  // $journal->save();
+
+  $journal = Journal::create($request->validated());
   
-  return redirect()->route('journal.show', ['id'=>$entry->id])->with('success', 'Entry created successfully');
+  return redirect()->route('journal.show', ['journal'=>$journal->id])->with('success', 'Entry created successfully');
 })->name('journal.store');
 

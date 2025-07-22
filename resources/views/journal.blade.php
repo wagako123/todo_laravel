@@ -7,7 +7,7 @@
     @if(count($entries))   
         @foreach($entries as $entry)
         <div>
-            <h1><a href="{{route('journal.show', ['id' => $entry->id]) }}">{{$entry->title}}</a></h1>
+            <h1><a href="{{route('journal.show', ['journal' => $entry->id]) }}">{{$entry->title}}</a></h1>
 
             <p>{{$entry->description}}</p>
         </div>

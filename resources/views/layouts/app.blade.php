@@ -11,10 +11,10 @@
         <div>{{session('success')}}</div>
     @endif
     <div class="align-middle">
-         <h1 class="py-12 bg-sky-500 text-white text-4xl text-center">@yield('title')</h1>
+         <h1 class="py-8 bg-sky-500 text-white text-4xl text-center">@yield('title')</h1>
     </div>
    
-    <div class="p-4">@yield('content')</div>
+    <div class="p-4 bg-slate-100">@yield('content')</div>
 </body>
 
 
